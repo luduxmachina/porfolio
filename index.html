@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ludux Machina</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav>
+    
+    <div class="logo">Ludux Machina</div>
+    <img src="img/logo.png" alt="Ludux Machina Logo" style="height:70px; text-align:center;">
+    <div class="nav-links">
+      <a href="#juegos">Juegos</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <p>Somos Ludux Machina, un equipo de estudiantes de la Universidad Rey Juan Carlos que transforma ideas en videojuegos.
+        Nos apasiona crear mundos, historias y experiencias únicas.</p>
+  </header>
+
+  <h2 id="games-title" class="title">Nuestros Proyectos</h2>
+  <!-- GAMES section -->
+  <section id="juegos" class="section games" aria-labelledby="games-title">
+    <div class="carousel-wrap" aria-hidden="false">
+      <div class="carousel-track" id="carouselTrack">
+        <!-- placeholders; replace URLs with real screenshots -->
+        <div class="carousel-item"><img src="img/bicho.jpg" alt="Barkitos captura 1"></div>
+        <div class="carousel-item"><img src="img/bicho.jpg" alt="Barkitos captura 2"></div>
+        <div class="carousel-item"><img src="img/bicho.jpg" alt="Barkitos captura 3"></div>
+      </div>
+
+      <div class="dots" id="dots" aria-hidden="false" title="Navegación de capturas"></div>
+      <div class="swipe-hint">desliza • captura</div>
+    </div>
+
+    <aside class="game-info" role="complementary">
+      <h2 id="game-title">Barkitos Animals</h2>
+        <p>Acompaña a Barkito, un simpático robot, en una aventura imaginaria para rescatar animales de juguete. Explora un archipiélago lleno de desafíos, cuida de cada juguete y cumple las cuotas de rescate.
+            Un juego entrañable que combina exploración, gestión ligera y estrategia, con un estilo inspirado en juguetes y un mundo lleno de imaginación.
+        </p>
+      <div class="meta">
+        <div><small>Género: </small><strong>Aventura / Simulación</strong></div>
+        <div><small>Motor: </small><strong>Unity</strong></div>
+        <div><small>Plataformas: </small><strong>PC Web</strong></div>
+        <div><small>Estado: </small><strong>En desarrollo</strong></div>
+      </div>
+    <!-- Botón para probar el juego -->
+        <button id="playGameBtn" class="btn" style="margin-top:16px; color:#000">Probar Juego</button>
+    </aside>
+    </section>
+
+    <!-- Modal -->
+    <div id="gameModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:1000;">
+    <div style="position:relative; width:95%; max-width:1200px; aspect-ratio:16/9; background:#000; border-radius:12px; overflow:hidden;">
+        <button id="closeModal" style="position:absolute; top:10px; right:12px; z-index:10; font-size:24px; color:#fff; background:transparent; border:none; cursor:pointer;">&times;</button>
+        <iframe src="https://itch.io/embed-upload/15292426?color=333333" allowfullscreen
+        style="width:100%; height:100%; border:0; display:block;"></iframe>
+    </div>
+    </div>
+
+  <!-- TEAM section -->
+  <section id="equipo" class="team" aria-labelledby="team-title">
+    <h2 id="team-title" class="title">Nuestro Equipo</h2>
+
+    <div class="team-shell" role="region" aria-roledescription="carrusel de equipo" aria-label="Miembros del equipo">
+      <button class="arrow-btn arrow-left" id="prevBtn" aria-label="Anterior miembro">&#10094;</button>
+
+      <div id="memberArea" class="member-card" aria-live="polite">
+        <!-- content injected by JS -->
+        <div class="member-photo"><img src="img/bicho.jpg" alt=""></div>
+        <div class="member-name">Nombre Apellido</div>
+        <div class="member-role">Rol</div>
+        <div class="member-bio">Breve descripción del rol y responsabilidades dentro del equipo.</div>
+      </div>
+
+      <button class="arrow-btn arrow-right" id="nextBtn" aria-label="Siguiente miembro">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contacto" class="contact">
+    <h2 class="title">Contáctanos</h2>
+    <form id="contactForm" 
+          action="https://formspree.io/f/mkgknqwv" 
+          method="POST">
+      <input type="email" name="email" placeholder="Tu correo" required>
+      <textarea name="message" rows="4" placeholder="Tu mensaje..." required></textarea>
+      <button class="btn" type="submit" style="color: #000;">Enviar</button>
+    </form>
+
+    <div style="text-align:center; margin-top:18px;">
+        <a class="social" href="https://ludux-machina.itch.io/" aria-label="Itch.io"><img src="img/rss/itch.png" alt="Itch.io" style="width:24px; height:24px;"></a>
+        <a class="social" href="https://x.com/LuduxMachina" aria-label="X"><img src="img/rss/tw.png" alt="X" style="width:24px; height:24px;"></a>
+        <a class="social" href="https://www.instagram.com/luduxmachina/#" aria-label="IG"><img src="img/rss/ig.png" alt="Instagram" style="width:24px; height:24px;"></a>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Ludux Machina — Licencia &middot; Todos los derechos reservados.
+  </footer>
+
+  <script>
+    // ---------- YEAR ----------
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---------- Game carousel ----------
+    (function(){
+      const track = document.getElementById('carouselTrack');
+      const items = Array.from(track.children);
+      const dotsContainer = document.getElementById('dots');
+      const itemWidth = 560; // same as CSS width
+      let current = 0;
+      let autoplay = true;
+      let timer = null;
+
+      // create dots
+      items.forEach((it, i) => {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i===0 ? ' active' : '');
+        d.dataset.index = i;
+        d.addEventListener('click', ()=> { goTo(i); restart(); });
+        dotsContainer.appendChild(d);
+      });
+      const dots = Array.from(dotsContainer.children);
+
+      function update(){
+        track.style.transform = `translateX(${ -current * itemWidth }px)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i===current));
+      }
+
+      function goTo(i){
+        current = (i + items.length) % items.length;
+        update();
+      }
+
+      function next(){
+        current = (current + 1) % items.length;
+        update();
+      }
+
+      function restart(){
+        autoplay = true;
+        clearInterval(timer);
+        timer = setInterval(()=>{ next(); }, 4200);
+      }
+
+      // swipe support (mobile)
+      let startX = null;
+      track.addEventListener('touchstart', (e)=>{
+        startX = e.touches[0].clientX;
+        clearInterval(timer); autoplay = false;
+      }, {passive:true});
+      track.addEventListener('touchend', (e)=>{
+        if (startX === null) return;
+        const dx = (e.changedTouches[0].clientX - startX);
+        if (dx > 30) { current = (current - 1 + items.length) % items.length; }
+        else if (dx < -30) { current = (current + 1) % items.length; }
+        update();
+        startX = null;
+        restart();
+      });
+
+      // mouse drag support (desktop)
+      let isDown = false, startClientX = 0;
+      track.addEventListener('mousedown', (e)=>{
+        isDown = true; startClientX = e.clientX; clearInterval(timer);
+      });
+      window.addEventListener('mouseup', (e)=>{
+        if (!isDown) return; isDown = false;
+        const dx = e.clientX - startClientX;
+        if (dx > 40) current = (current - 1 + items.length) % items.length;
+        else if (dx < -40) current = (current + 1) % items.length;
+        update(); restart();
+      });
+
+      // autoplay
+      restart();
+    })();
+
+    // ---------- Team carousel (one-by-one with left/right arrows) ----------
+    (function(){
+      const members = [
+        { name: "Alberto Palomino Montañez", role: "Líder de Arte", bio: "Coordinación visual, creación de assets y estética general del juego.", img: "img/MembersImage/Alvert.jpg" },
+        { name: "Miguel Lázaro Gil", role: "Líder de Programación", bio: "Arquitectura del código, control de juego e implementación de mecánicas.", img: "img/MembersImage/mig.png" },
+        { name: "Alba Poza Vela", role: "Artista / Programadora", bio: "Creación de assets, UI y animación.", img: "img/MembersImage/Alvert.jpg" },
+        { name: "Julio Hornos Rodriguez", role: "Artista", bio: "Creación de assets 2D y 3D, fondos y animación.", img: "img/MembersImage/julio.png" },
+        { name: "Alvaro Codorniu", role: "Artista", bio: "Diseño visual y animaciones 3D.", img: "img/MembersImage/Alvert.jpg" },
+        { name: "Francisco Peña Caldito", role: "Programador", bio: "Implementación de mecánicas, UI y optimización.", img: "img/MembersImage/Alvert.jpg" }
+      ];
+
+      let memberArea = document.getElementById('memberArea');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      let idx = 0;
+      let animating = false;
+
+      function renderMember(newIdx, direction){
+        if (animating) return;
+        animating = true;
+        const nextData = members[newIdx];
+
+        // create new card element (for animation)
+        const newCard = memberArea.cloneNode(true);
+        // fill new
+        newCard.querySelector('.member-photo img').src = nextData.img;
+        newCard.querySelector('.member-photo img').alt = nextData.name;
+        newCard.querySelector('.member-name').textContent = nextData.name;
+        newCard.querySelector('.member-role').textContent = nextData.role;
+        newCard.querySelector('.member-bio').textContent = nextData.bio;
+
+        if (direction === 'right'){
+            newCard.classList.add('enter-right');
+        } else {
+            newCard.classList.add('enter-left');
+        }
+
+        // position new card (insert after current)
+        memberArea.parentNode.insertBefore(newCard, memberArea.nextSibling);
+
+        // animate old card out
+        if (direction === 'right'){ 
+            memberArea.classList.add('leave-right'); /* ANTES: leave-left */
+        } else { 
+            memberArea.classList.add('leave-left'); /* ANTES: leave-right */
+        }
+
+        // after animation, remove old and keep new as #memberArea
+        setTimeout(()=>{
+            memberArea.remove();
+
+            newCard.id = 'memberArea';
+
+            memberArea = newCard; 
+
+            animating = false;
+        }, 480);
+
+        idx = newIdx;
+      }
+
+      function attachEventsToButtons(){
+        // reassign element variables
+        const newPrev = document.getElementById('prevBtn');
+        const newNext = document.getElementById('nextBtn');
+        // click handlers already attached below, they use global idx and functions
+      }
+
+      function goNext(){
+        const nextIdx = (idx + 1) % members.length;
+        renderMember(nextIdx, 'right');
+      }
+      function goPrev(){
+        const prevIdx = (idx - 1 + members.length) % members.length;
+        renderMember(prevIdx, 'left');
+      }
+
+      // initial populate
+      (function init(){
+        const m = members[0];
+        memberArea.querySelector('.member-photo img').src = m.img;
+        memberArea.querySelector('.member-photo img').alt = m.name;
+        memberArea.querySelector('.member-name').textContent = m.name;
+        memberArea.querySelector('.member-role').textContent = m.role;
+        memberArea.querySelector('.member-bio').textContent = m.bio;
+      })();
+
+      prevBtn.addEventListener('click', ()=> { if (!animating) goPrev(); });
+      nextBtn.addEventListener('click', ()=> { if (!animating) goNext(); });
+
+      // keyboard arrows
+      window.addEventListener('keydown', (e)=>{
+        if (e.key === 'ArrowLeft') prevBtn.click();
+        if (e.key === 'ArrowRight') nextBtn.click();
+      });
+    })();
+    
+    //para el iFrame
+    const playBtn = document.getElementById('playGameBtn');
+    const modal = document.getElementById('gameModal');
+    const closeModal = document.getElementById('closeModal');
+
+    playBtn.addEventListener('click', () => {
+    modal.style.display = 'flex';
+    });
+
+    closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+    });
+
+    // Opcional: cerrar modal al hacer clic fuera del contenido
+    modal.addEventListener('click', (e) => {
+    if(e.target === modal) modal.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
