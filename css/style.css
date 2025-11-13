@@ -67,7 +67,8 @@ nav{
     display:flex; align-items:center; justify-content:center;
 }
 .carousel-track{
-  display:flex; transition:transform .55s cubic-bezier(.2,.9,.2,1);
+  display:flex; 
+  transition:transform .55s cubic-bezier(.2,.9,.2,1);
   height:100%;
 }
 .carousel-item{
