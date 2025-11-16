@@ -58,26 +58,44 @@ nav{
   .games{flex-direction:row; align-items:flex-start; justify-content:center; gap:48px}
 }
 
-/* carousel visual */
-.carousel-wrap{
-    width: 560px; 
-    height: 315px; 
-    border-radius:14px; background:var(--card);
-    overflow:hidden; position:relative; box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-    display:flex; align-items:center; justify-content:center;
+/* 1. El ABUELO (Contenedor): Define la altura fija */
+.carousel-wrap {
+    width: 100%;            
+    max-width: 560px;       
+    /*height: 380px;          /* <--- Altura MAESTRA definida aquí */
+    aspect-ratio: 16 / 10;
+    border-radius: 14px; 
+    background: var(--card);
+    overflow: hidden;       
+    position: relative; 
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    margin: 0 auto;         
 }
-.carousel-track{
-  display:flex; 
-  transition:transform .55s cubic-bezier(.2,.9,.2,1);
-  height:100%;
+
+/* 2. EL PADRE (Pista): Debe heredar la altura del abuelo */
+.carousel-track {
+    display: flex; 
+    width: 100%;            
+    height: 100%;           /* <--- IMPORTANTE: Hereda los 315px del wrap */
+    transition: transform .55s cubic-bezier(.2,.9,.2,1);
 }
-.carousel-item{
-    min-width: 560px; 
-    height: 315px; 
-    user-select:none; position:relative;
+
+/* 3. EL HIJO (Item): Debe heredar la altura de la pista */
+.carousel-item {
+    flex: 0 0 100%;      
+    width: 100%;         
+    max-width: 100%;     
+    height: 100%;        /* <--- IMPORTANTE: Hereda el 100% de altura */
+    user-select: none; 
+    position: relative;
 }
-.carousel-item img{
-  width:100%; height:100%; object-fit:cover; display:block;
+
+/* 4. LA NIETA (Imagen): Debe llenar al hijo */
+.carousel-item img {
+    width: 100%; 
+    height: 100%;        /* <--- IMPORTANTE: Fuerza a la imagen a medir 315px */
+    object-fit:contain;   /* <--- MAGIA: Recorta lo que sobre para no deformar la imagen */
+    display: block;      /* Elimina espacios blancos fantasma debajo de la imagen */
 }
 
 /* dots */
