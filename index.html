@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -9,91 +9,104 @@
 <body>
 
   <nav>
-    
     <div class="logo">Ludux Machina</div>
     <img src="img/logo.png" alt="Ludux Machina Logo" style="height:70px; text-align:center;">
     <div class="nav-links">
-      <a href="#juegos">Juegos</a>
-      <a href="#equipo">Equipo</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#juegos">Games</a>
+      <a href="#equipo">Team</a>
+      <a href="#contacto">Contact</a>
     </div>
   </nav>
 
   <header class="hero">
-    <p>Somos Ludux Machina, un equipo de estudiantes de la Universidad Rey Juan Carlos que transforma ideas en videojuegos.
-        Nos apasiona crear mundos, historias y experiencias únicas.</p>
+    <p>We are Ludux Machina, a team of students from Rey Juan Carlos University who turn ideas into video games.
+       We are passionate about creating worlds, stories, and unique experiences.</p>
   </header>
 
-  <h2 id="games-title" class="title">Nuestros Proyectos</h2>
-  <!-- GAMES section -->
+  <h2 id="games-title" class="title">Our Projects</h2>
+
   <section id="juegos" class="section games" aria-labelledby="games-title">
     <div class="carousel-wrap" aria-hidden="false">
       <div class="carousel-track" id="carouselTrack">
-        <!-- placeholders; replace URLs with real screenshots -->
-        <div class="carousel-item"><img src="img/Icono2.png" alt="Barkitos captura 1"></div>
-        <div class="carousel-item"><img src="img/Icono1.png" alt="Barkitos captura 2"></div>
-        <div class="carousel-item"><img src="img/Icono3.png" alt="Barkitos captura 3"></div>
-        <div class="carousel-item"><img src="img/bicho.jpg" alt="Barkitos captura bicho"></div>
-        
+        <div class="carousel-item"><img src="img/Cap1.jpg" alt="Barkitos screenshot 1"></div>
+        <div class="carousel-item"><img src="img/Cap2.jpg" alt="Barkitos screenshot 2"></div>
+        <div class="carousel-item"><img src="img/Cap3.jpg" alt="Barkitos screenshot 3"></div>
+        <div class="carousel-item"><img src="img/Cap4.jpg" alt="Barkitos screenshot 4"></div>
       </div>
 
-      <div class="dots" id="dots" aria-hidden="false" title="Navegación de capturas"></div>
-      <div class="swipe-hint">desliza • captura</div>
+      <div class="dots" id="dots" aria-hidden="false" title="Screenshot navigation"></div>
+      <div class="swipe-hint">swipe • capture</div>
     </div>
 
     <aside class="game-info" role="complementary">
       <h2 id="game-title">Barkitos Animals</h2>
-        <p>Acompaña a Barkito, un simpático robot, en una aventura imaginaria para rescatar animales de juguete. Explora un archipiélago lleno de desafíos, cuida de cada juguete y cumple las cuotas de rescate.
-            Un juego entrañable que combina exploración, gestión ligera y estrategia, con un estilo inspirado en juguetes y un mundo lleno de imaginación.
-        </p>
-      <div class="meta">
-        <div><small>Género: </small><strong>Aventura / Simulación</strong></div>
-        <div><small>Motor: </small><strong>Unity</strong></div>
-        <div><small>Plataformas: </small><strong>PC Web</strong></div>
-        <div><small>Estado: </small><strong>En desarrollo</strong></div>
-      </div>
-    <!-- Botón para probar el juego -->
-        <button id="playGameBtn" class="btn" style="margin-top:16px; color:#000">Probar Juego</button>
-    </aside>
-    </section>
+      <p>Join Barkito, a friendly robot, on an imaginary adventure to rescue toy animals. Explore an archipelago full of challenges, take care of each toy, and complete rescue quotas.
+         A charming game that combines exploration, light management, and strategy, with a style inspired by toys and a world full of imagination.</p>
 
-    <!-- Modal -->
-    <div id="gameModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:1000;">
+      <div class="meta">
+        <div><small>Genre: </small><strong>Adventure / Simulation</strong></div>
+        <div><small>Engine: </small><strong>Unity</strong></div>
+        <div><small>Platforms: </small><strong>PC Web</strong></div>
+        <div><small>Status: </small><strong>In development</strong></div>
+      </div>
+
+      <button id="playGameBtn" class="btn" style="margin-top:16px; color:#000">Play Game</button>
+      <button id="donateBtn" class="btn donate" style="color:#000; margin-top:16px;">Donate</button>
+      <button class="btn" style="color:#000; margin-top:16px;" onclick="window.location.href='info.html'">Information</button>
+    </aside>
+
+    <div id="donateModal" class="donate-modal">
+      <div class="donate-box">
+        <button id="closeDonateModal" class="close-donate">✖</button>
+
+        <h3 class="donate-title">Make a Donation</h3>
+        <p class="donate-text">Enter the amount you wish to donate:</p>
+
+        <input id="donationAmount" type="number" min="1" placeholder="€" class="donation-input">
+
+        <button id="sendDonation" class="btn donate-submit">
+          Send Donation
+        </button>
+
+        <p id="donationMessage" class="donation-message"></p>
+      </div>
+    </div>
+  </section>
+
+  <div id="gameModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:1000;">
     <div style="position:relative; width:95%; max-width:1200px; aspect-ratio:16/9; background:#000; border-radius:12px; overflow:hidden;">
         <button id="closeModal" style="position:absolute; top:10px; right:12px; z-index:10; font-size:24px; color:#fff; background:transparent; border:none; cursor:pointer;">&times;</button>
         <iframe src="https://itch.io/embed-upload/15292426?color=333333" allowfullscreen
         style="width:100%; height:100%; border:0; display:block;"></iframe>
     </div>
-    </div>
+  </div>
 
-  <!-- TEAM section -->
   <section id="equipo" class="team" aria-labelledby="team-title">
-    <h2 id="team-title" class="title">Nuestro Equipo</h2>
+    <h2 id="team-title" class="title">Our Team</h2>
 
-    <div class="team-shell" role="region" aria-roledescription="carrusel de equipo" aria-label="Miembros del equipo">
-      <button class="arrow-btn arrow-left" id="prevBtn" aria-label="Anterior miembro">&#10094;</button>
+    <div class="team-shell" role="region" aria-roledescription="team carousel" aria-label="Team members">
+      <button class="arrow-btn arrow-left" id="prevBtn" aria-label="Previous member">&#10094;</button>
 
       <div id="memberArea" class="member-card" aria-live="polite">
-        <!-- content injected by JS -->
         <div class="member-photo"><img src="img/bicho.jpg" alt=""></div>
-        <div class="member-name">Nombre Apellido</div>
-        <div class="member-role">Rol</div>
-        <div class="member-bio">Breve descripción del rol y responsabilidades dentro del equipo.</div>
+        <div class="member-name">Name Surname</div>
+        <div class="member-role">Role</div>
+        <div class="member-bio">Short description of the role and responsibilities within the team.</div>
       </div>
 
-      <button class="arrow-btn arrow-right" id="nextBtn" aria-label="Siguiente miembro">&#10095;</button>
+      <button class="arrow-btn arrow-right" id="nextBtn" aria-label="Next member">&#10095;</button>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contacto" class="contact">
-    <h2 class="title">Contáctanos</h2>
+    <h2 class="title">Contact Us</h2>
+
     <form id="contactForm" 
           action="https://formspree.io/f/mkgknqwv" 
           method="POST">
-      <input type="email" name="email" placeholder="Tu correo" required>
-      <textarea name="message" rows="4" placeholder="Tu mensaje..." required></textarea>
-      <button class="btn" type="submit" style="color: #000;">Enviar</button>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" rows="4" placeholder="Your message..." required></textarea>
+      <button class="btn" type="submit" style="color: #000;">Send</button>
     </form>
 
     <div style="text-align:center; margin-top:18px;">
@@ -104,9 +117,8 @@
   </section>
 
   <footer>
-    © <span id="year"></span> Ludux Machina — Licencia &middot; Todos los derechos reservados.
+    © <span id="year"></span> Ludux Machina — License · All rights reserved.
   </footer>
-
   <script>
     // ---------- YEAR ----------
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -198,13 +210,14 @@
     // ---------- Team carousel (one-by-one with left/right arrows) ----------
     (function(){
       const members = [
-        { name: "Alberto Palomino Montañez", role: "Líder de Arte", bio: "Coordinación visual, creación de assets y estética general del juego.", img: "img/MembersImage/Alvert.jpg" },
-        { name: "Miguel Lázaro Gil", role: "Líder de Programación", bio: "Arquitectura del código, control de juego e implementación de mecánicas.", img: "img/MembersImage/mig.png" },
-        { name: "Alba Poza Vela", role: "Artista / Programadora", bio: "Creación de assets, UI y animación.", img: "img/MembersImage/alba.jpg" },
-        { name: "Julio Hornos Rodriguez", role: "Artista", bio: "Creación de assets 2D y 3D, fondos y animación.", img: "img/MembersImage/julio.png" },
-        { name: "Alvaro Codorniu", role: "Artista", bio: "Diseño visual y animaciones 3D.", img: "img/MembersImage/alvaro.jpg" },
-        { name: "Francisco Peña Caldito", role: "Programador", bio: "Implementación de mecánicas, UI y optimización.", img: "img/MembersImage/fran.png" }
+        { name: "Alberto Palomino Montañez", role: "Art Lead", bio: "Visual coordination, asset creation, and overall game aesthetics.", img: "img/MembersImage/Alvert.jpg" },
+        { name: "Miguel Lázaro Gil", role: "Programming Lead", bio: "Code architecture, game control, and mechanics implementation.", img: "img/MembersImage/mig.png" },
+        { name: "Alba Poza Vela", role: "Artist / Programmer", bio: "Asset creation, UI, and animation.", img: "img/MembersImage/alba.jpg" },
+        { name: "Julio Hornos Rodriguez", role: "Artist", bio: "2D and 3D asset creation, backgrounds, and animation.", img: "img/MembersImage/julio.png" },
+        { name: "Alvaro Codorniu", role: "Artist", bio: "Visual design and 3D animations.", img: "img/MembersImage/alvaro.jpg" },
+        { name: "Francisco Peña Caldito", role: "Programmer", bio: "Mechanics implementation, UI, and optimization.", img: "img/MembersImage/fran.png" }
       ];
+
 
       let memberArea = document.getElementById('memberArea');
       const prevBtn = document.getElementById('prevBtn');
@@ -309,6 +322,60 @@
     modal.addEventListener('click', (e) => {
     if(e.target === modal) modal.style.display = 'none';
     });
+    const donateBtn = document.getElementById("donateBtn");
+const donateModal = document.getElementById("donateModal");
+const closeDonate = document.getElementById("closeDonateModal");
+const sendDonation = document.getElementById("sendDonation");
+const donationMessage = document.getElementById("donationMessage");
+
+donateBtn.addEventListener("click", () => {
+  donateModal.style.display = "flex";
+  donationMessage.style.display = "none"; // ocultar mensaje cuando se abre
+});
+
+closeDonate.addEventListener("click", () => {
+  donateModal.style.display = "none";
+});
+
+donateModal.addEventListener("click", (e) => {
+  if (e.target === donateModal) donateModal.style.display = "none";
+});
+
+sendDonation.addEventListener("click", () => {
+  const amount = document.getElementById("donationAmount").value;
+
+  if (!amount || amount <= 0) {
+    donationMessage.style.display = "block";
+    donationMessage.style.color = "#d32f2f";
+    donationMessage.textContent = "Introduce una cantidad válida.";
+    return;
+  }
+
+  donationMessage.style.display = "block";
+  donationMessage.style.color = "#4CAF50";
+  donationMessage.textContent = "Thank you for your donation of $"+amount+"! 💛";
+
+  // opcional: limpiar el input
+  document.getElementById("donationAmount").value = "";
+});
+ // Animación al cargar
+  document.body.classList.add('fade-in');
+
+  // Animación al hacer clic en enlaces
+  document.querySelectorAll('a').forEach(link => {
+    if (link.target === "_blank") return; // no aplicar a links que abren nueva pestaña
+
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const url = this.href;
+
+      document.body.classList.add('fade-out');
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 600); // mismo tiempo que la animación
+    });
+  });
   </script>
 </body>
 </html>

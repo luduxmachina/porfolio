@@ -239,6 +239,114 @@ input,textarea{
   background:var(--accent); border:0; color:white; padding:12px 14px; border-radius:8px; font-weight:700; cursor:pointer;
   box-shadow: 0 8px 26px rgba(47,140,255,0.14);
 }
+.donate {
+  background: #ffd54f;
+  border: 2px solid #ffca28;
+  transition: 0.25s;
+}
+
+.donate:hover {
+  background: #ffca28;
+  transform: scale(1.05);
+}
+
+/* ==== DONATION MODAL ==== */
+
+.donate-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.donate-box {
+  background: rgba(15, 19, 21, 0.92);
+  padding: 26px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.close-donate {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.2s;
+}
+.close-donate:hover { transform: scale(1.15); color: var(--accent); }
+
+.donate-title {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.donate-text {
+  color: var(--muted);
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.donation-input {
+  width: 80%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: #0b0f10;
+  color: var(--text);
+  text-align: center;
+  font-size: 1rem;
+}
+
+.donate-submit {
+  margin-top: 16px;
+  width: 100%;
+  color: #000 !important;
+}
+
+.donation-message {
+  display: none;
+  margin-top: 16px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
 
 footer{padding:18px; color:#97a3ab; text-align:center; border-top:1px solid rgba(255,255,255,0.02)}
 a.social{color:var(--accent); margin:0 8px; text-decoration:none; font-size:18px}
+
+/* Página aparece suavemente */
+  .fade-in {
+    animation: fadeInPage 0.6s ease forwards;
+  }
+
+  /* Página se desvanece al salir */
+  .fade-out {
+    animation: fadeOutPage 0.6s ease forwards;
+  }
+
+  @keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeOutPage {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
